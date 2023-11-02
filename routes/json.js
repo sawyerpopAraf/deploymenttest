@@ -17,7 +17,7 @@ router.post('/', async function(req, res, next) {
 router.get('/', async function(req, res, next) {
       try {
             const data = await s3.getObject({
-                Bucket: "your_bucket_name",
+                Bucket: "cyclic-scary-glasses-hare-eu-north-1",
                 Key: "randomText.json",
             }).promise();
             
