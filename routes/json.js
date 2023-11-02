@@ -1,15 +1,36 @@
-const { Router } = require("express");
+var express = require('express');
+var router = express.Router();
 const { save } = require("../save_json");
 const AWS = require("aws-sdk");
 const s3 = new AWS.S3()
 
-const router = new Router();
 
 
+const getCurrentData = async () => {
+    try {
+        const data = await s3.getObject({
+            Bucket: "your_bucket_name",
+            Key: "randomText.json",
+        }).promise();
+        
+        return JSON.parse(data.Body.toString());
+    } catch (error) {
+        return [];
+    }
+};
 
 router.post('/', async function(req, res, next) {
     const {randomText} = req.body;
-    await save(randomText);
+    
+    // Get the current data from S3
+    const currentData = await getCurrentData();
+    
+    // Append new data
+    currentData.push(randomText);
+    
+    // Save updated data to S3
+    await save(currentData);
+
     res.json({ randomText });
 });
 
