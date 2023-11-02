@@ -9,7 +9,7 @@ const s3 = new AWS.S3()
 const getCurrentData = async () => {
     try {
         const data = await s3.getObject({
-            Bucket: "your_bucket_name",
+            Bucket: "cyclic-scary-glasses-hare-eu-north-1",
             Key: "randomText.json",
         }).promise();
         
