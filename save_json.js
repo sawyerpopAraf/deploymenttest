@@ -8,7 +8,7 @@ const save = async (randomText) => {
   await s3.putObject({
     Body: JSON.stringify(randomText, null, 2),
     Bucket: "your_bucket_name",
-    Key: "number.json",
+    Key: "randomText.json",
   }).promise()
 };
 
