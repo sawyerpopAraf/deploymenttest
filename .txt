@@ -1,0 +1,12 @@
+Create an Express application with the following endpoints:
+/json:
+POST – Saves text in the JSON file.
+GET – Gets text saved in the JSON file.
+/dishes:
+POST – Adds a new dish to the database.
+GET – Gets a list of all the dishes.
+/dishes/:dishKey:
+GET – Gets details of dishes of the provided key.
+Each dish has name and country fields. The country field represents the country it comes from. You can assume data from the request will be in the correct format. If the client tries to add an existing dish, override it. The POST request to the /json endpoint should specify the text in the “content” property in the request’s body.
+Implement Cyclic.sh basic auth so access to the /json endpoint is provided only to authorised users.
+You should use DynamoDB and the S3 store to implement the endpoints.
