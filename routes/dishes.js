@@ -1,8 +1,9 @@
-const CyclicDB = require('@cyclic.sh/dynamodb')
-const db = CyclicDB(process.env.CYCLIC_DB)
-let dish = db.collection('users')
 var express = require('express');
 var router = express.Router();
+const CyclicDB = require('@cyclic.sh/dynamodb')
+const db = CyclicDB(process.env.CYCLIC_DB)
+let dish = db.collection('dishes')
+
 
 
 /* GET home page. */
@@ -17,7 +18,7 @@ router.post('/',async function(req, res, next) {
     await dish.set(name,{
         country:country
     })
-    res.end
+    res.end()
 })
 
 router.get('/:name',async function(req,res,next){
