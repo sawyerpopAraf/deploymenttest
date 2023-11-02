@@ -27,3 +27,5 @@ router.get('/', async function(req, res, next) {
             res.status(500).json({ error: "Error retrieving data" });
         }
     });
+
+    module.exports = router;
